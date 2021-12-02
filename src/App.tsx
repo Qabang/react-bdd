@@ -1,32 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import Navbar from './components/Navbar'
+
+import {
+  NavLink,
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from 'react-router-dom'
+
+import Startview from './components/Startview'
 import './App.css';
 import Login from './components/Login';
 
 function App() {
-  const appTitle = 'Our Awsome shop!'
-  const linkItems = [{ to: '/login', name: 'Login' }, { to: '/cart', name: 'Cart' }]
+  // const appTitle = 'Our Awsome shop!'
+  // const linkItems = [{ to: '/login', name: 'Login' }, { to: '/cart', name: 'Cart' }]
 
   return (
     <div className="App">
-      <Navbar appTitle={appTitle} linkItems={linkItems} />
+      <Router>
 
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Login />
+        <header className="App-header">
+          <nav>
+            <NavLink to="/"> Start</NavLink>
+            <NavLink to="/login"> Login</NavLink>
+          </nav>
+        </header>
+        <section className="main-content">
+          <Routes>
+            <Route path="/" element={<Startview />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+          </Routes>
+        </section>
+      </Router>
     </div>
   );
 }
