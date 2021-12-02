@@ -5,7 +5,6 @@ interface products {
 }
 function ProductCard({ id, name, price }: products) {
 
-  // const  id = productData.id
   return (<ul>
     <li>{id}</li>
     <li>{name}</li>
