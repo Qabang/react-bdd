@@ -60,10 +60,11 @@ function Startview() {
     }
   ]
 
-  products.map((product) => console.log(product))
+  //products.map((product) => console.log(product))
   return <>
-    {products.map((product) => (
-      <ProductCard id={product.id} name={product.name} price={product.price} />
+    <h1>Våra produkter</h1>
+    {products.map((product, id) => (
+      <ProductCard key={id} id={product.id} name={product.name} price={product.price} />
     ))}
   </>
 }

@@ -30,7 +30,7 @@ describe('test for /login', () => {
     expect(wrapper.find('#loginBtn').length).toBe(1)
   })
 
-  test('Component calls submit function with no username and password, should create/display error string', () => {
+  test('Submit login with with no username and password, should create/display error string', () => {
     const expectedText = 'Fel användarnamn eller lösenord'
     const wrapper = shallow(<Login />)
     const button = wrapper.find('#loginBtn')

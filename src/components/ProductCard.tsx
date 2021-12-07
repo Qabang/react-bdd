@@ -6,9 +6,9 @@ interface products {
 function ProductCard({ id, name, price }: products) {
 
   return (<ul>
-    <li>{id}</li>
-    <li>{name}</li>
-    <li>{price}</li>
+    <li>{id} - {name} {price} sek </li>
+    {/* <li>{name}</li>
+    <li>{price}</li> */}
   </ul>)
 }
 
