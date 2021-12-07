@@ -1,9 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import ProductDetails from '../components/ProductDetails'
-import { shallow, mount } from 'enzyme'
-import Startview from '../components/Startview'
-import ProductCard from '../components/ProductCard'
-import App from '../App'
+import { shallow } from 'enzyme'
 
 // Mock a single product.
 const product = {
