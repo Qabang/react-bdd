@@ -1,9 +1,10 @@
-import { product } from '../models/product'
+import { Product } from '../models/product'
 interface Props {
-  product: product
+  product: Product
+  addToCart: (product: Product) => void;
 }
 
-function ProductDetails({ product }: Props) {
+function ProductDetails({ product, addToCart }: Props) {
   const image = product.image ? (
     <img src={product.image} alt={product.name} />
   ) : (
@@ -13,7 +14,7 @@ function ProductDetails({ product }: Props) {
   function handleAddToCart() {
     console.log('Handle add to cart.')
     // TODO: Logic for add to cart.
-    return true
+    addToCart(product);
   }
 
   return (

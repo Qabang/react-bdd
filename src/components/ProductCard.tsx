@@ -3,12 +3,19 @@ interface products {
   name: string,
   price: number
 }
-function ProductCard({ id, name, price }: products) {
+interface Props {
 
-  return (<ul>
+}
+
+function ProductCard({ id, name, price }: products) {
+  function showProduct(props: Props) {
+    let id = props
+
+    console.log(id)
+  }
+  return (<ul onClick={() => showProduct(id)} >
     <li>{id} - {name} {price} sek </li>
-    {/* <li>{name}</li>
-    <li>{price}</li> */}
+
   </ul>)
 }
 
