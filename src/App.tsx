@@ -21,7 +21,7 @@ function App() {
 
         <header className="App-header">
           <nav>
-            <NavLink to="/"> Start</NavLink>
+            <NavLink to="/"> Start</NavLink> |
             <NavLink to="/login"> Login</NavLink>
           </nav>
         </header>
