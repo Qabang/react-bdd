@@ -1,20 +1,44 @@
+import { useEffect, useState } from 'react'
 import { Product } from '../models/product'
-interface Props {
-  product: Product
-  addToCart: (product: Product) => void;
-}
+import { useParams } from 'react-router-dom'
 
-function ProductDetails({ product, addToCart }: Props) {
-  const image = product.image ? (
-    <img src={product.image} alt={product.name} />
-  ) : (
-    'No image found'
-  )
+function ProductDetails(props: {
+  products: Array<Product>
+  addToCart: (product: Product) => any //TODO should probably not be any...
+}) {
+  const { id } = useParams()
+  const [image, setImage]: any = useState('No image found')
+  const [product, setProduct] = useState({
+    id: 0,
+    name: '',
+    price: 0,
+    description: '',
+    image: '',
+  })
+
+  useEffect(() => {
+    props.products.map((item) => {
+      if (item.id.toString() === id) {
+        const prod = {
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          description: item.description,
+          image: item.image,
+        }
+
+        if (item.image) {
+          setImage(<img src={item.image} alt={item.name} />)
+        }
+        return setProduct(prod)
+      }
+    })
+  }, [id])
 
   function handleAddToCart() {
-    console.log('Handle add to cart.')
-    // TODO: Logic for add to cart.
-    addToCart(product);
+    console.log('Handle add to cart:', product)
+    // Pass product to app.tsx.
+    return props.addToCart(product)
   }
 
   return (
@@ -24,7 +48,9 @@ function ProductDetails({ product, addToCart }: Props) {
       <div>
         Pris: <span data-test="product-price">{product.price}</span>kr
       </div>
-      <button data-test="product-add" onClick={handleAddToCart}>Add to cart</button>
+      <button data-test="product-add" onClick={handleAddToCart}>
+        Add to cart
+      </button>
     </>
   )
 }
