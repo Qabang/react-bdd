@@ -7,7 +7,7 @@ interface Props {
 const SearchResult = ({ product }: Props) => (
   <div>
     {product.map((product) => (
-      <div key={product.id}>
+      <div data-test="resultProduct" key={product.id}>
         {product.image}
         {product.name}
         {product.description}
