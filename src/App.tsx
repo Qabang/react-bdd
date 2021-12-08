@@ -1,5 +1,5 @@
 import React from 'react';
-import {Product} from './models/product'
+import { Product } from './models/product'
 
 import {
   NavLink,
@@ -14,7 +14,7 @@ import Login from './components/Login';
 import ProductDetails from './components/ProductDetails';
 
 function App() {
-const products: Product[] = [
+  const products: Product[] = [
     {
       id: 1,
       name: "Eyeliner",
@@ -103,9 +103,9 @@ const products: Product[] = [
         </header>
         <section className="main-content">
           <Routes>
-            <Route path="/" element={<Startview products={products}/>}></Route>
+            <Route path="/" element={<Startview products={products} />}></Route>
             <Route path="/login" element={<Login />}></Route>
-            <Route path="/product/:id" element={<ProductDetails products={products} addToCart={addProductToCart}/>}></Route>
+            <Route path="/product/:id" element={<ProductDetails products={products} addToCart={addProductToCart} />}></Route>
           </Routes>
         </section>
       </Router>

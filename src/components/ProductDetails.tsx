@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Product } from '../models/product'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function ProductDetails(props: {
   products: Array<Product>
@@ -51,6 +52,7 @@ function ProductDetails(props: {
       <button data-test="product-add" onClick={handleAddToCart}>
         Add to cart
       </button>
+      <Link to='/' > Tillbaka till produktsidan </Link>
     </>
   );
 }
