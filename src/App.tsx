@@ -118,7 +118,7 @@ function App() {
         </header>
         <section className="main-content">
           <Routes>
-            <Route path="/" element={<Startview products={products}/>}></Route>
+            <Route path="/" element={<Startview products={products} />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/cart" element={<Cart products={cartItems} removeFromCart={RemoveProductFromCart}/>}></Route>
             <Route path="/product/:id" element={<ProductDetails products={products} addToCart={addProductToCart}/>}></Route>
