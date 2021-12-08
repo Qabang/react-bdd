@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Product} from './models/product'
 
 import {
@@ -12,9 +12,11 @@ import Startview from './components/Startview'
 import './App.css';
 import Login from './components/Login';
 import ProductDetails from './components/ProductDetails';
+import Cart from './components/Cart';
 
 function App() {
-const products: Product[] = [
+  const [cartItems, setCartItems]= useState<object[]>([])
+  const products: Product[] = [
     {
       id: 1,
       name: "Eyeliner",
@@ -88,8 +90,19 @@ const products: Product[] = [
   ]
 
   function addProductToCart(product: Object) {
-    // TODO Add logic for add to cart.
-    console.log(product)
+    setCartItems(cartItems => [...cartItems, product]);
+  }
+
+  function RemoveProductFromCart (array_index: number) {
+    let tmp_array: Object[] = []
+    
+    // Add the items that dosen't match the given array_index.
+    cartItems.map((item, index) => {
+      if (index !== array_index) {
+        tmp_array.push(item)
+      }
+    })
+    return setCartItems(tmp_array)
   }
 
   return (
@@ -97,14 +110,17 @@ const products: Product[] = [
       <Router>
         <header className="App-header">
           <nav>
-            <NavLink to="/"> Start</NavLink> |
-            <NavLink to="/login"> Login</NavLink>
+            <NavLink to="/"> Start</NavLink> | 
+            <NavLink to="/login"> Login</NavLink> | 
+            <NavLink to="/cart"> Cart</NavLink>
+            {cartItems.length}
           </nav>
         </header>
         <section className="main-content">
           <Routes>
             <Route path="/" element={<Startview products={products}/>}></Route>
             <Route path="/login" element={<Login />}></Route>
+            <Route path="/cart" element={<Cart products={cartItems} removeFromCart={RemoveProductFromCart}/>}></Route>
             <Route path="/product/:id" element={<ProductDetails products={products} addToCart={addProductToCart}/>}></Route>
           </Routes>
         </section>
