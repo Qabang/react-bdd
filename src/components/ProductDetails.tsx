@@ -37,7 +37,6 @@ function ProductDetails(props: {
   }, [id])
 
   function handleAddToCart() {
-    console.log('Handle add to cart:', product)
     // Pass product to app.tsx.
     return props.addToCart(product)
   }

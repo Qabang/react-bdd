@@ -101,6 +101,7 @@ function App() {
       if (index !== array_index) {
         tmp_array.push(item)
       }
+      return tmp_array
     })
     return setCartItems(tmp_array)
   }
