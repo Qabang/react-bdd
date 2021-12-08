@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import { shallow } from 'enzyme'
 import StartView from '../components/Startview'
 
 const product = [

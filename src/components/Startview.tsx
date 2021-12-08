@@ -13,9 +13,10 @@ function Startview(props: { products: Array<Product> }) {
   return (
     <>
       <h1>Våra produkter</h1>
-      <SearchBox searchValue={searchText} setSearchValue={setSearchText} />
+      <SearchBox
+        searchValue={searchText} setSearchValue={setSearchText} />
       {filteredProducts.map((product, id) => (
-        <Link key={product.id} to={`product/${product.id}`}>
+        <Link key={product.id} to={`product/${product.id}`} >
           <ProductCard
             id={product.id}
             name={product.name}

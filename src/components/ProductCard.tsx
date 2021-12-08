@@ -13,7 +13,7 @@ function ProductCard({ id, name, price }: products) {
 
     console.log(id)
   }
-  return (<ul onClick={() => showProduct(id)} >
+  return (<ul onClick={() => showProduct(id)} data-test="resultProduct">
     <li>{id} - {name} {price} sek </li>
 
   </ul>)
