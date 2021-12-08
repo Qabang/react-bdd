@@ -52,7 +52,7 @@ function ProductDetails(props: {
         Add to cart
       </button>
     </>
-  )
+  );
 }
 
-export default ProductDetails
+export default ProductDetails;

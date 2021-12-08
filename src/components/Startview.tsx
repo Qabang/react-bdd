@@ -16,5 +16,4 @@ function Startview(props: {products:Array<Product>}) {
   </>
 }
 
-export default Startview
-
+export default Startview;
