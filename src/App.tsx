@@ -95,7 +95,6 @@ const products: Product[] = [
   return (
     <div className="App">
       <Router>
-
         <header className="App-header">
           <nav>
             <NavLink to="/"> Start</NavLink> |
@@ -104,7 +103,7 @@ const products: Product[] = [
         </header>
         <section className="main-content">
           <Routes>
-            <Route path="/" element={<Startview data={products}/>}></Route>
+            <Route path="/" element={<Startview products={products}/>}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/product/:id" element={<ProductDetails products={products} addToCart={addProductToCart}/>}></Route>
           </Routes>

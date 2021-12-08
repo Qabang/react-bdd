@@ -2,8 +2,8 @@ import ProductCard from './ProductCard'
 import {Product} from '../models/product'
 import { Link } from 'react-router-dom'
 
-function Startview(props: {data:Array<Product>}) {
-  const products = props.data
+function Startview(props: {products:Array<Product>}) {
+  const products = props.products
   //products.map((product) => console.log(product))
   return <>
     <h1>Våra produkter</h1>
