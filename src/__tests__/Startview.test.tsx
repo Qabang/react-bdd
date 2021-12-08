@@ -1,21 +1,25 @@
-import { render } from '@testing-library/react';
-import { mount, shallow } from 'enzyme';
-import StartView from '../components/Startview';
+import { render } from '@testing-library/react'
+import { shallow } from 'enzyme'
+import StartView from '../components/Startview'
+
+const product = [
+  {
+    id: 1,
+    name: 'Bahama Mama Bronzer',
+    price: 149,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, illo eum ducimus, sunt deserunt qui esse facilis dolore perferendis autem necessitatibus aspernatur cumque molestiae distinctio numquam quaerat, velit dolores corporis?',
+    image: '',
+  },
+]
 
 describe('test for /Startview', () => {
   test('Render Startview component', () => {
-    render(<StartView />)
+    render(<StartView products={product} />)
   })
-  test('Component renders 1 SearchBox', () => {
-    const wrapper = shallow(<StartView />);
-    expect(wrapper.find('SearchBox').length).toBe(1)
-  })
-  test('Search "Mascara", should render 2 products', () => {
-    const wrapper = mount(<StartView />);
-    const serchText = 'Mascara'
-    const serachField = wrapper.find('[data-test="searchProduct"]')
-
-    serachField.simulate('change', { target: { value: serchText } })
-    expect(wrapper.find('[data-test="resultProduct"]').length).toBe(2)
+  
+  test('Component renders 1 input field', () => {
+    const wrapper = shallow(<StartView products={product} />)
+    expect(wrapper.find('input').length).toBe(1)
   })
 })
