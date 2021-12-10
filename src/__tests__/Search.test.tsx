@@ -39,7 +39,7 @@ describe("Test for Serch on product", () => {
     searchField.simulate("change", { target: { value: searchText } });
     expect(wrapper.find('[data-test="resultProduct"]').length).toBe(0);
   });
-  test('Search "bAhAmA" should render 1 product. (Case Insensitive Search)', () => {
+  test('Search "bAhAmA", should render 1 product. (Case Insensitive Search)', () => {
     const wrapper = mount(
       <BrowserRouter>
         <StartView products={product} />
