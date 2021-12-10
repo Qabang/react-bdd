@@ -2,6 +2,8 @@
 import { render, screen } from '@testing-library/react'
 import { shallow, mount } from 'enzyme'
 import Cart from '../components/Cart'
+import { BrowserRouter, Link } from 'react-router-dom'
+
 
 const mockRemoveFromCart = jest.fn()
 
@@ -25,11 +27,11 @@ const products = [
 
 describe('Test for Cart', ()=> {
   test('Should Render Cart component', ()=>{
-    render(<Cart products={products} removeFromCart={mockRemoveFromCart}/>)
+    render(<BrowserRouter><Cart products={products} removeFromCart={mockRemoveFromCart}/></BrowserRouter>)
   })
 
   test('Should Render the text "Kundvagn"', ()=>{
-    render(<Cart products={products} removeFromCart={mockRemoveFromCart}/>)
+    render(<BrowserRouter><Cart products={products} removeFromCart={mockRemoveFromCart}/></BrowserRouter>)
     expect(screen.getByText(/Kundvagn/i)).toBeInTheDocument()
   })
   
@@ -39,7 +41,7 @@ describe('Test for Cart', ()=> {
   })
   
   test('Should Render the item\'s names when there is 2 items in the cart', ()=>{
-    render(<Cart products={products} removeFromCart={mockRemoveFromCart}/>)
+    render(<BrowserRouter><Cart products={products} removeFromCart={mockRemoveFromCart}/></BrowserRouter>)
     expect(screen.getByText(/Bahama mama bronzer/i)).toBeInTheDocument()
     expect(screen.getByText(/React logo/i)).toBeInTheDocument()
   })
@@ -61,7 +63,7 @@ describe('Test for Cart', ()=> {
   })
 
   test('Trigger the delete function on the first item in the cart, It should return the index of the item about to be deleted.', () => {
-    const wrapper = mount(<Cart products={products} removeFromCart={mockRemoveFromCart}/>)
+    const wrapper = mount(<BrowserRouter><Cart products={products} removeFromCart={mockRemoveFromCart}/></BrowserRouter>)
     const btn = wrapper.find('button[data-test="delete-button"]').first()
     btn.simulate('click')
     expect(mockRemoveFromCart.mock.calls.length).toBe(1)
