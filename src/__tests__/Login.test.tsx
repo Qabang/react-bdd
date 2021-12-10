@@ -30,7 +30,7 @@ describe('test for /login', () => {
     expect(wrapper.find('#loginBtn').length).toBe(1)
   })
 
-  test('Submit login with with no username and password, should create/display error string', () => {
+  test('Submit login with no username and password, should create/display error string', () => {
     const expectedText = 'Fel användarnamn eller lösenord'
     const wrapper = shallow(<Login />)
     const button = wrapper.find('#loginBtn')
@@ -54,6 +54,44 @@ describe('test for /login', () => {
 
     inputUsername.simulate('change', { target: { value: wrongUsername } })
     inputPassword.simulate('change', { target: { value: wrongPassword } })
+
+    wrapper.find('#loginBtn').simulate('click')
+    expect(wrapper.text().includes(expectedText)).toBe(true)
+  })
+  test('Submit login with correct username and wrong password, should create/display error string', () => {
+    const expectedText = 'Fel användarnamn eller lösenord'
+
+    const correctUsername = 'Zeljko'
+    const wrongPassword = 'supersafepassword'
+    const wrapper = shallow(<Login />)
+
+    const inputUsername = wrapper.find('#inputUsername')
+    const inputPassword = wrapper.find('#inputPassword')
+
+    expect(inputPassword.length).toBe(1)
+    expect(inputUsername.length).toBe(1)
+
+    inputUsername.simulate('change', { target: { value: correctUsername } })
+    inputPassword.simulate('change', { target: { value: wrongPassword } })
+
+    wrapper.find('#loginBtn').simulate('click')
+    expect(wrapper.text().includes(expectedText)).toBe(true)
+  })
+  test('Submit login with wrong username and correct password, should create/display error string', () => {
+    const expectedText = 'Fel användarnamn eller lösenord'
+
+    const wrongUsername = 'username'
+    const correctPassword = 'Niclas123'
+    const wrapper = shallow(<Login />)
+
+    const inputUsername = wrapper.find('#inputUsername')
+    const inputPassword = wrapper.find('#inputPassword')
+
+    expect(inputPassword.length).toBe(1)
+    expect(inputUsername.length).toBe(1)
+
+    inputUsername.simulate('change', { target: { value: wrongUsername } })
+    inputPassword.simulate('change', { target: { value: correctPassword } })
 
     wrapper.find('#loginBtn').simulate('click')
     expect(wrapper.text().includes(expectedText)).toBe(true)

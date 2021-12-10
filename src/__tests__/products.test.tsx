@@ -64,14 +64,14 @@ describe('tests for detail view of products', () => {
   })
 
   //Whitebox tests
-  test('product title should be rendered in an h2 element', () => {
+  test('Product title should be rendered in an h2 element', () => {
     const wrapper = shallow(
       <ProductDetails products={product} addToCart={mockAddToCart} />
     )
     expect(wrapper.find('h2[data-test="product-title"]').length).toBe(1)
   })
 
-  test('if product has no image it should render text "No image Found"', () => {
+  test('If product has no image it should render text "No image Found"', () => {
     const wrapper = shallow(
       <ProductDetails products={product} addToCart={mockAddToCart} />
     )
@@ -81,7 +81,7 @@ describe('tests for detail view of products', () => {
     )
   })
 
-  test('if product has an image it should render it in an img element"', () => {
+  test('If product has an image it should render it in an img element"', () => {
     const wrapper = mount(
       <BrowserRouter><ProductDetails products={productWithImage} addToCart={mockAddToCart} /></BrowserRouter>
     )
@@ -116,5 +116,11 @@ describe('tests for detail view of products', () => {
     const stringValue = screen.getByText(/Tillbaka till produktsidan/i)
     expect(stringValue).toBeInTheDocument()
 
+  })
+  test('Check if link "Tillbaka till produkt sidan" is an <a> element', () => {
+    const wrapper = mount(
+      <BrowserRouter><ProductDetails products={product} addToCart={mockAddToCart} /></BrowserRouter>
+    )
+    expect(wrapper.find('a[data-test="back-to-products-link"]').length).toBe(1)
   })
 })

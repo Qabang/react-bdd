@@ -34,9 +34,9 @@ describe('Test for Cart', ()=> {
     render(<BrowserRouter><Cart products={products} removeFromCart={mockRemoveFromCart}/></BrowserRouter>)
     expect(screen.getByText(/Kundvagn/i)).toBeInTheDocument()
   })
-  
-  test('Should Render the text "Inga produkter" if there is no items in the cart', ()=>{
-    render(<Cart products={[]} removeFromCart={mockRemoveFromCart}/>)
+
+  test('Should render the text "Inga produkter" if there is no items in the cart', () => {
+    render(<Cart products={[]} removeFromCart={mockRemoveFromCart} />)
     expect(screen.getByText(/Inga produkter/i)).toBeInTheDocument()
   })
   
@@ -46,18 +46,18 @@ describe('Test for Cart', ()=> {
     expect(screen.getByText(/React logo/i)).toBeInTheDocument()
   })
 
-  test('Should Render the items in an unordered list', ()=>{
-    const wrapper = shallow(<Cart products={products} removeFromCart={mockRemoveFromCart}/>)
+  test('Should render the items in an unordered list', () => {
+    const wrapper = shallow(<Cart products={products} removeFromCart={mockRemoveFromCart} />)
     expect(wrapper.find('li').length).toBe(2)
   })
 
-  test('Should Render a delete "button" to each item in the cart', ()=>{
-    const wrapper = shallow(<Cart products={products} removeFromCart={mockRemoveFromCart}/>)
+  test('Should render a delete "button" to each item in the cart', () => {
+    const wrapper = shallow(<Cart products={products} removeFromCart={mockRemoveFromCart} />)
     expect(wrapper.find('[data-test="delete-button"]').length).toBe(2)
   })
 
-  test('Should Render the total sum of the products.', ()=>{
-    const wrapper = shallow(<Cart products={products} removeFromCart={mockRemoveFromCart}/>)
+  test('Should render the total sum of the products.', () => {
+    const wrapper = shallow(<Cart products={products} removeFromCart={mockRemoveFromCart} />)
     const total = products[0].price + products[1].price
     expect(wrapper.find('[data-test="cart-items-total"]').text()).toBe(total.toString())
   })

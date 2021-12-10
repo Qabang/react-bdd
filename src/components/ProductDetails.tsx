@@ -51,7 +51,7 @@ function ProductDetails(props: {
       <button data-test="product-add" onClick={handleAddToCart}>
         Add to cart
       </button>
-      <Link to='/' > Tillbaka till produktsidan </Link>
+      <Link data-test="back-to-products-link" to='/' > Tillbaka till produktsidan </Link>
     </>
   );
 }
