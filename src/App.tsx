@@ -13,9 +13,11 @@ import './App.css';
 import Login from './components/Login';
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 
 function App() {
   const [cartItems, setCartItems]= useState<object[]>([])
+    const [msg, setMsg] = useState('')
   const products: Product[] = [
     {
       id: 1,
@@ -106,6 +108,10 @@ function App() {
     return setCartItems(tmp_array)
   }
 
+  function handleOrder (msg:string) {
+    setMsg(msg)
+  }
+
   return (
     <div className="App">
       <Router>
@@ -122,6 +128,7 @@ function App() {
             <Route path="/" element={<Startview products={products} />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/cart" element={<Cart products={cartItems} removeFromCart={RemoveProductFromCart}/>}></Route>
+            <Route path="/checkout" element={<Checkout products={cartItems} sendOrder={handleOrder} msg={msg}/> }></Route>
             <Route path="/product/:id" element={<ProductDetails products={products} addToCart={addProductToCart}/>}></Route>
           </Routes>
         </section>
