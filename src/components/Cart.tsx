@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Cart(props: {
   products: object[]
   removeFromCart: (index: number) => void
@@ -14,25 +16,31 @@ function Cart(props: {
       <section>
         <h2>Kundvagn</h2>
         {products.length > 0 && (
-          <ul>
-            {products.map((product: any, index: number) => (
-              <div key={product.id}>
-                <li>{product.name}<span>{product.price}</span></li>
-                
-                <button
-                  data-test="delete-button"
-                  onClick={() => {
-                    props.removeFromCart(index)
-                  }}
-                >
-                  Tabort
-                </button>
+          <>
+            <ul>
+              {products.map((product: any, index: number) => (
+                <div key={product.id}>
+                  <li>
+                    {product.name}
+                    <span>{product.price}</span>
+                  </li>
+
+                  <button
+                    data-test="delete-button"
+                    onClick={() => {
+                      props.removeFromCart(index)
+                    }}
+                  >
+                    Tabort
+                  </button>
+                </div>
+              ))}
+              <div>
+                Totalt: <span data-test="cart-items-total">{sum}</span>
               </div>
-            ))}
-            <div>
-              Totalt: <span data-test="cart-items-total">{sum}</span>
-            </div>
-          </ul>
+            </ul>
+            <Link to="/checkout"> Gå videre till checkout </Link>
+          </>
         )}
         {products.length === 0 && 'Det finns inga produkter här än.'}
       </section>
